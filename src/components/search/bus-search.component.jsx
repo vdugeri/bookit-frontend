@@ -2,6 +2,7 @@ import React from 'react';
 import { FormInput } from '../form-input/form-input.component';
 import { CustomButton } from '../custom-button/custom-button.component';
 import { CustomDatePicker } from '../form-input/date-picker.component';
+import { LinkIcon } from '../link-icon/link-icon.component';
 import './search.styles.scss';
 
 class BusSearch extends React.Component {
@@ -35,6 +36,8 @@ class BusSearch extends React.Component {
           value={this.state.origin}
         />
 
+        <LinkIcon />
+
         <FormInput
           type="search"
           name="destination"
@@ -59,6 +62,7 @@ class BusSearch extends React.Component {
           label="passengers"
           handleChange={this.handleChange}
           value={this.state.passengers}
+          small={true}
         />
         <CustomButton>SEARCH</CustomButton>
       </div>

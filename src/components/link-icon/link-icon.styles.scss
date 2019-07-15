@@ -1,0 +1,19 @@
+.link-icon {
+  display: flex;
+  align-items: center;
+
+  &__circle {
+    width: 6px;
+    height:6px;
+    border: 1px solid #777;
+    border-radius: 50%;
+  }
+
+  &__line {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #777;
+    width: 50px;
+    margin: 0 -1px;
+  }
+}
