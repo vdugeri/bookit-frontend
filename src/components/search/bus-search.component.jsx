@@ -51,8 +51,7 @@ class BusSearch extends React.Component {
           handleChange={this.handleDateChange}
           selected={this.state.departureDate}
           dateFormat="dd-MM-yyyy"
-          className="form-input"
-          label="date"
+          label="Date"
           value={this.state.departureDate}
         />
 

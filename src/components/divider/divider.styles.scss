@@ -1,0 +1,22 @@
+$color-primary: #8249c1;
+
+.divider-container {
+    display: flex;
+    margin-top: 5px;
+
+    & .divider-main {
+      display: flex;
+      align-items: center;
+      width: 60px;
+      border-bottom: 2px solid $color-primary;
+    }
+
+    & .divider-minor {
+      display: flex;
+      align-items: center;
+      width: 10px;
+      border-bottom: 2px solid $color-primary;
+      margin-left: 5px;
+    }
+  }
+
