@@ -1,29 +1,29 @@
-import React from 'react';
-import { FormInput } from '../form-input/form-input.component';
-import { CustomButton } from '../custom-button/custom-button.component';
-import { CustomDatePicker } from '../form-input/date-picker.component';
-import { LinkIcon } from '../link-icon/link-icon.component';
-import './search.styles.scss';
+import React from "react";
+import { FormInput } from "../form-input/form-input.component";
+import { CustomButton } from "../custom-button/custom-button.component";
+import { CustomDatePicker } from "../form-input/date-picker.component";
+import { LinkIcon } from "../link-icon/link-icon.component";
+import "./search.styles.scss";
 
 class BusSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      origin: '',
-      destination: '',
-      passengers: '',
-      departureDate: ''
+      origin: "",
+      destination: "",
+      passengers: "",
+      departureDate: ""
     };
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value })
-  }
+    this.setState({ [name]: value });
+  };
 
-  handleDateChange = (date) => {
-    this.setState({ departureDate: date })
-  }
+  handleDateChange = date => {
+    this.setState({ departureDate: date });
+  };
 
   render() {
     return (
@@ -65,7 +65,7 @@ class BusSearch extends React.Component {
         />
         <CustomButton>SEARCH</CustomButton>
       </div>
-    )
+    );
   }
 }
 

@@ -11,4 +11,10 @@
   &__about {
     margin-top: 4rem;
   }
+
+  &__howto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

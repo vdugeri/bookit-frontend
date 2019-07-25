@@ -3,9 +3,11 @@
   display: block;
   width: 100%;
   margin: 0 auto;
-  font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", "Segoe UI", "Calibri", "Arial",
+    sans-serif;
   font-size: 18px;
   color: #60666d;
+  z-index: 999;
 
   @media (min-width: 768px) {
     width: 70%;
@@ -59,7 +61,7 @@
   }
 
   &__input {
-    display: none;
+    display: block;
 
     &:checked + .select-box__input-text {
       display: block;
