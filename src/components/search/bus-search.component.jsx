@@ -63,6 +63,7 @@ class BusSearch extends React.Component {
           value={this.state.passengers}
           small={true}
         />
+
         <CustomButton>SEARCH</CustomButton>
       </div>
     );

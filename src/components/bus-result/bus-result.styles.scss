@@ -1,0 +1,49 @@
+.bus-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 80%;
+  background-color: #fff;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.14);
+  min-height: 15rem;
+  padding: 5px;
+  margin-bottom: 2.5rem;
+
+  &__action {
+    margin-top: 2rem;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80px;
+
+    & span {
+      font-size: 18px;
+      font-weight: bolder;
+      display: flex;
+      align-items: center;
+      font-weight: 300;
+      color: #777;
+    }
+
+    & h2 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+  }
+
+  &__locations {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+  }
+}

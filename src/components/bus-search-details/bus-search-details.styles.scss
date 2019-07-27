@@ -1,0 +1,25 @@
+.search-details {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 10rem;
+  flex-direction: column;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    margin-top: 2rem;
+  }
+
+  &__section {
+    color: #777;
+    & span {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 14px;
+      color: #777;
+    }
+  }
+}

@@ -1,10 +1,11 @@
 .link-icon {
   display: flex;
   align-items: center;
+  padding: 1rem;
 
   &__circle {
     width: 6px;
-    height:6px;
+    height: 6px;
     border: 1px solid #777;
     border-radius: 50%;
   }
