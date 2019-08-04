@@ -1,6 +1,8 @@
 import React from "react";
 import { LinkIcon } from "../link-icon/link-icon.component";
 import { CustomButton } from "../custom-button/custom-button.component";
+import { FormInput } from "../form-input/form-input.component";
+
 import "./bus-result.styles.scss";
 
 export const BusResult = () => (
@@ -27,7 +29,7 @@ export const BusResult = () => (
     </div>
     <div className="bus-result__section">
       <h2>Passengers</h2>
-      <span>3</span>
+      <FormInput type="number" small />
     </div>
   </div>
 );

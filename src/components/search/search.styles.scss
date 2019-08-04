@@ -17,8 +17,8 @@ $main-color: black;
   width: 800px;
   min-height: 350px;
   background-color: $color-white;
-  box-shadow: 0 1rem 2rem rgba($color-black, .14);
-
+  box-shadow: 0 1rem 2rem rgba($color-black, 0.14);
+  font-size: 1.8rem;
 
   &__bus {
     display: flex;
@@ -34,7 +34,6 @@ $main-color: black;
     align-items: center;
     height: 50px;
     border-bottom: 1px solid $color-grey;
-
 
     &--container {
       display: flex;
@@ -59,23 +58,23 @@ $main-color: black;
 }
 
 .form-input {
-    background: none;
-    background-color: white;
-    color: $sub-color;
-    font-size: 18px;
-    padding: 10px 10px 10px 5px;
-    display: block;
-    width: 100%;
-    border: 1px solid #777;
-    border-radius: 0;
-    border-bottom: 1px solid $sub-color;
-    margin: 25px 0;
+  background: none;
+  background-color: white;
+  color: $sub-color;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: 1px solid #777;
+  border-radius: 0;
+  border-bottom: 1px solid $sub-color;
+  margin: 25px 0;
 
-    &:focus {
-      outline: none;
-    }
-
-    &:focus ~ .form-input-label {
-      @include shrinkLabel();
-    }
+  &:focus {
+    outline: none;
   }
+
+  &:focus ~ .form-input-label {
+    @include shrinkLabel();
+  }
+}

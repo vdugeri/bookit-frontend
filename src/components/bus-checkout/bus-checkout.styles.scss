@@ -1,0 +1,89 @@
+.bus-checkout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #000, $alpha: 0.5);
+  z-index: 999;
+  display: flex;
+  justify-content: flex-end;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 100%;
+    background-color: #fff;
+    padding: 2rem;
+  }
+
+  &__close {
+    font-weight: 400;
+    font-size: 16px;
+    color: #000;
+    align-self: flex-end;
+    cursor: pointer;
+    letter-spacing: 1.2px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+
+    & h2 {
+      text-transform: uppercase;
+      font-weight: 400;
+      font-size: 2rem;
+      letter-spacing: 1.4px;
+    }
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 4rem;
+  }
+
+  &__section {
+    width: 30%;
+    padding: 1rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+
+    & h3 {
+      text-transform: none;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+    }
+
+    &:last-of-type {
+      margin-right: auto;
+      margin-left: 8px;
+    }
+  }
+
+  &__payment {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+  }
+
+  &__button {
+    align-self: flex-end;
+  }
+}
+
+.small-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,19 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 300px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-size: 15px;
+  font-weight: 700;
+
+  & a {
+    color: #777;
+
+    &:active,
+    &:hover {
+      color: #8249c1;
+    }
+  }
+}

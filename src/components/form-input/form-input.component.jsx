@@ -1,26 +1,36 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './form-input.styles.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import "./form-input.styles.scss";
 
-export const FormInput = ({ label, handleChange, small, ...otherProps }) => {
+export const FormInput = ({
+  label,
+  handleChange,
+  small,
+  medium,
+  ...otherProps
+}) => {
   return (
-    < div className="group" >
+    <div className="group">
       <input
-        className={`form-input ${small ? 'small' : ''}`}
+        className={`form-input ${small ? "small" : ""} ${
+          medium ? "medium" : ""
+        }`}
         onChange={handleChange}
         {...otherProps}
       />
-      {
-        label ?
-          (<label className={`${otherProps.value.length ? 'shrink' : ''} form-input-label`}>
-            {label}
-          </label>)
-          : null
-      }
-    </div >
-  )
-}
+      {label ? (
+        <label
+          className={`${
+            otherProps.value.length ? "shrink" : ""
+          } form-input-label`}
+        >
+          {label}
+        </label>
+      ) : null}
+    </div>
+  );
+};
 
 FormInput.propTypes = {
   small: PropTypes.bool
-}
+};
