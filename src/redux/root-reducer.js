@@ -6,7 +6,7 @@ import searchReducer from "./search/search.reducer";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["search"]
+  whitelist: ["search", "query"]
 };
 
 const rootReducer = combineReducers({

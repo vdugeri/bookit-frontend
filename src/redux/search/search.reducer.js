@@ -1,7 +1,8 @@
 import { searchActionTypes } from "./search.types";
 
 const INITIAL_STATE = {
-  busResults: []
+  busResults: [],
+  query: {}
 };
 
 const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -10,6 +11,12 @@ const searchReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         busResults: payload
+      };
+
+    case searchActionTypes.SET_QUERY:
+      return {
+        ...state,
+        query: payload
       };
 
     default:

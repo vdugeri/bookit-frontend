@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { HomePage } from "./pages/homepage/homepage.component";
-import SearchResults from "./pages/search-results/search-results.component";
+import SearchResults from "./pages/bus-results/bus-results.component";
 
 function App() {
   return (

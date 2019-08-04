@@ -1,8 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { FormInput } from "../form-input/form-input.component";
 import { CustomButton } from "../custom-button/custom-button.component";
 import { CustomDatePicker } from "../form-input/date-picker.component";
 import { LinkIcon } from "../link-icon/link-icon.component";
+import { search, setQuery } from "../../redux/search/search.actions";
+
 import "./search.styles.scss";
 
 class BusSearch extends React.Component {
@@ -11,7 +15,6 @@ class BusSearch extends React.Component {
     this.state = {
       origin: "",
       destination: "",
-      passengers: "",
       departureDate: ""
     };
   }
@@ -26,6 +29,17 @@ class BusSearch extends React.Component {
   };
 
   render() {
+    const { origin, destination } = this.state;
+    let { departureDate } = this.state;
+
+    departureDate = new Date(departureDate).getTime();
+
+    const query = {
+      origin,
+      destination,
+      departureDate
+    };
+
     return (
       <div className="search__bus">
         <FormInput
@@ -55,19 +69,28 @@ class BusSearch extends React.Component {
           value={this.state.departureDate}
         />
 
-        <FormInput
-          type="number"
-          name="passengers"
-          label="passengers"
-          handleChange={this.handleChange}
-          value={this.state.passengers}
-          small={true}
-        />
-
-        <CustomButton>SEARCH</CustomButton>
+        <CustomButton
+          onClick={() => {
+            this.props.search(query);
+            this.props.setQuery(query);
+            this.props.history.push("/bus-results");
+          }}
+        >
+          SEARCH
+        </CustomButton>
       </div>
     );
   }
 }
 
-export default BusSearch;
+const mapDispatchToProps = dispatch => ({
+  search: query => dispatch(search(query)),
+  setQuery: query => dispatch(setQuery(query))
+});
+
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(BusSearch)
+);
