@@ -1,69 +1,107 @@
 import React from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+
 import { Divider } from "../divider/divider.component";
 import { FormInput } from "../form-input/form-input.component";
 import { CustomButton } from "../custom-button/custom-button.component";
 
+import { toggleHidden } from "../../redux/cart/cart.actions";
+import { checkout } from "../../redux/checkout/checkout.actions";
+import { selectCartItems } from "../../redux/cart/cart.selectors";
+
 import "./bus-checkout.styles.scss";
 
-export const BusCheckout = ({ cardNumber, handleChange, ...otherProps }) => {
-  const { expiryDate, cvv } = otherProps;
-  return (
-    <div className="bus-checkout">
-      <div className="bus-checkout__content">
-        <div className="bus-checkout__close">
-          <span>close</span>
-        </div>
-        <div className="bus-checkout__header">
-          <h2>Payment Details</h2>
-          <Divider />
-        </div>
-        <div className="bus-checkout__details">
-          <div className="bus-checkout__section">
-            <span>Company</span>
-            <h3>ABC Transport</h3>
+class BusCheckout extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      passengers: 1,
+      emailAddress: ""
+    };
+  }
+
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
+
+  handlePay = () => {};
+
+  render() {
+    const { passengers, emailAddress } = this.state;
+    const { toggleCartHidden, handlePayment } = this.props;
+    const { cartItems } = this.props;
+    const { price } = cartItems;
+
+    const total = passengers * price * 100;
+
+    return (
+      <div className="bus-checkout">
+        <div className="bus-checkout__content">
+          <div className="bus-checkout__close">
+            <span onClick={() => toggleCartHidden()}>close</span>
           </div>
-          <div className="bus-checkout__section">
-            <span>Passengers</span>
-            <h3>3</h3>
+          <div className="bus-checkout__header">
+            <h2>Payment Details</h2>
+            <Divider />
           </div>
-          <div className="bus-checkout__section">
-            <span>Departure Time</span>
-            <h3>7:30 AM</h3>
+          <div className="bus-checkout__details">
+            <div className="bus-checkout__section">
+              <span>Company</span>
+              <h3>{cartItems.company.name}</h3>
+            </div>
+            <div className="bus-checkout__section">
+              <span>Departure Time</span>
+              <h3>{cartItems.departureTime}</h3>
+            </div>
+            <div className="bus-checkout__section">
+              <span>Total Price</span>
+              <h3>&#8358;{(cartItems.price * passengers).toLocaleString()}</h3>
+            </div>
           </div>
-          <div className="bus-checkout__section">
-            <span>Total Price</span>
-            <h3>24,400</h3>
-          </div>
-        </div>
-        <div className="bus-checkout__payment">
-          <FormInput
-            label="CARD NUMBER"
-            type="text"
-            value={cardNumber}
-            handleChange={handleChange}
-            name="cardNumber"
-          />
-          <div className="small-group">
+          <div className="bus-checkout__email">
             <FormInput
-              label="EXPIRY DATE"
-              type="text"
-              value={expiryDate}
-              handleChange={handleChange}
-              name="expiryDate"
-            />
-            <FormInput
-              label="CVV"
-              type="text"
-              value={cvv}
-              handleChange={handleChange}
-              name="cvv"
+              type="email"
+              value={emailAddress}
+              handleChange={this.handleChange}
+              name="emailAddress"
+              label="Email Address"
+              required
             />
           </div>
-          <div className="bus-checkout__button">
-            <CustomButton>Pay Now</CustomButton>
+          <div className="bus-checkout__passengers">
+            <FormInput
+              type="number"
+              value={passengers}
+              handleChange={this.handleChange}
+              name="passengers"
+              label="passengers"
+              required
+            />
+            <CustomButton
+              onClick={() => handlePayment({ total, emailAddress })}
+            >
+              Pay Now
+            </CustomButton>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
+
+const mapStateToProps = createStructuredSelector({
+  cartItems: selectCartItems
+});
+
+const mapDispatchToProps = dispatch => ({
+  toggleCartHidden: () => dispatch(toggleHidden()),
+  handlePayment: ({ emailAddress, total }) =>
+    dispatch(checkout({ emailAddress, total }))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BusCheckout);

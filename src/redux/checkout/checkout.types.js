@@ -1,0 +1,4 @@
+export const checkoutActionTypes = {
+  PAYMENT_SUCCESSFUL: "PAYMENT_SUCCESSFUL",
+  PAYMENT_FAILED: "PAYMENT_FAILED"
+};
