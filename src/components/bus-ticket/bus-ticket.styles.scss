@@ -1,0 +1,117 @@
+.bus-ticket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    min-height: 600px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    align-items: center;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.14);
+    background-color: #fff;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    padding-right: 2rem;
+  }
+
+  &__details {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 50px;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+
+    & h2 {
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__customer-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 12px;
+
+    &--header {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      text-transform: uppercase;
+      margin-left: 12px;
+
+      & span.horizontal-line {
+        width: 60%;
+        position: absolute;
+        top: 50%;
+        left: 27%;
+        color: #eee;
+        margin-left: 25px;
+
+        & hr {
+          color: #eee;
+        }
+      }
+    }
+
+    &--section {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+      margin-left: 12px;
+
+      & h2 {
+        font-size: 14px;
+        color: #ccc;
+        font-weight: 600;
+      }
+
+      & span {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-top: 5px;
+      }
+    }
+
+    &--others {
+      width: 60%;
+      display: flex;
+      justify-content: space-between;
+      margin-left: 12px;
+      margin-top: 2rem;
+
+      & h2 {
+        font-size: 14px;
+        color: #ccc;
+        margin-bottom: 5px;
+      }
+
+      & span {
+        font-size: 14px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &--footer {
+    display: flex;
+    background-color: #eee;
+    width: 400px;
+    height: 208px;
+    border-top: 2px dotted #ccc;
+  }
+}

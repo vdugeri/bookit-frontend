@@ -15,20 +15,12 @@ const BusResultItem = ({ result, addToCart, toggleCartHidden }) => (
         <span>
           {result.origin.state} ({result.origin.city})
         </span>
-        <LinkIcon />
+        <span>
+          <LinkIcon />
+        </span>
         <span>
           {result.destination.state} ({result.destination.city})
         </span>
-      </div>
-      <div className="bus-result__action">
-        <CustomButton
-          onClick={() => {
-            addToCart(result);
-            toggleCartHidden();
-          }}
-        >
-          Book Bus
-        </CustomButton>
       </div>
     </div>
     <div className="bus-result__section">
@@ -45,15 +37,22 @@ const BusResultItem = ({ result, addToCart, toggleCartHidden }) => (
       <h2>Unit Price</h2>
       <span>&#8358;{result.price.toLocaleString()}</span>
     </div>
+    <div className="bus-result__action">
+      <CustomButton
+        onClick={() => {
+          addToCart(result);
+          toggleCartHidden();
+        }}
+      >
+        Book Bus
+      </CustomButton>
+    </div>
   </div>
 );
 
-const mapDispatchToProps = dispatch => ({
-  addToCart: bus => dispatch(addItemToCart(bus)),
-  toggleCartHidden: () => dispatch(toggleHidden())
+const mapDispatchToProps = (dispatch) => ({
+  addToCart: (bus) => dispatch(addItemToCart(bus)),
+  toggleCartHidden: () => dispatch(toggleHidden()),
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(BusResultItem);
+export default connect(null, mapDispatchToProps)(BusResultItem);

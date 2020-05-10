@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 3rem;
-  width: 1000px;
+  width: 80%;
   line-height: 1.4;
 
   &__heading {
@@ -16,6 +16,10 @@
 
   &__text {
     margin-top: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 
   &__paragraph {

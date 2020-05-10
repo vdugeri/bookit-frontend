@@ -1,9 +1,10 @@
 .bus-result {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   align-items: center;
+  grid-row-gap: 2rem;
   justify-content: space-around;
-  margin: 0 auto;
-  width: 80%;
+  width: 95%;
   background-color: #fff;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.14);
   min-height: 15rem;

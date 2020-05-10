@@ -14,15 +14,16 @@ $main-color: black;
 .search {
   display: flex;
   flex-direction: column;
-  width: 800px;
+  width: 60%;
   min-height: 350px;
   background-color: $color-white;
   box-shadow: 0 1rem 2rem rgba($color-black, 0.14);
   font-size: 18px;
 
   &__bus {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
     align-items: center;
     justify-content: space-between;
     width: 80%;
@@ -36,7 +37,8 @@ $main-color: black;
     border-bottom: 1px solid $color-grey;
 
     &--container {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       width: 50%;
       align-items: center;
       justify-content: flex-start;

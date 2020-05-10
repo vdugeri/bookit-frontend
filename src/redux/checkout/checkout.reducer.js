@@ -1,12 +1,13 @@
 import { checkoutActionTypes } from "./checkout.types";
 
 const INITIAL_STATE = {
-  paymentDetails: {}
+  paymentDetails: null
 };
 
 const checkoutReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case checkoutActionTypes.PAYMENT_SUCCESSFUL:
+      console.log(payload);
       return {
         ...state,
         paymentDetails: payload

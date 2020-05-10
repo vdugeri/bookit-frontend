@@ -8,7 +8,7 @@ import { CustomButton } from "../custom-button/custom-button.component";
 
 import { toggleHidden } from "../../redux/cart/cart.actions";
 import { checkout } from "../../redux/checkout/checkout.actions";
-import { selectCartItems } from "../../redux/cart/cart.selectors";
+import { selectCartItem } from "../../redux/cart/cart.selectors";
 
 import "./bus-checkout.styles.scss";
 
@@ -16,7 +16,7 @@ class BusCheckout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      passengers: 1,
+      passengers: "",
       emailAddress: ""
     };
   }
@@ -25,8 +25,6 @@ class BusCheckout extends React.Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
-
-  handlePay = () => {};
 
   render() {
     const { passengers, emailAddress } = this.state;
@@ -57,7 +55,9 @@ class BusCheckout extends React.Component {
             </div>
             <div className="bus-checkout__section">
               <span>Total Price</span>
-              <h3>&#8358;{(cartItems.price * passengers).toLocaleString()}</h3>
+              <h3>
+                &#8358;{(cartItems.price * (passengers || 1)).toLocaleString()}
+              </h3>
             </div>
           </div>
           <div className="bus-checkout__email">
@@ -92,7 +92,7 @@ class BusCheckout extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems
+  cartItems: selectCartItem
 });
 
 const mapDispatchToProps = dispatch => ({

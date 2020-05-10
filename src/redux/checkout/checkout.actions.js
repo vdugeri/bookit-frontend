@@ -1,4 +1,5 @@
 import { checkoutActionTypes } from "./checkout.types";
+import { cartActionTypes } from "../cart/cart.types";
 
 export const checkout = ({ emailAddress, total }) => {
   return async dispatch => {
@@ -8,23 +9,43 @@ export const checkout = ({ emailAddress, total }) => {
       amount: total,
       currency: "NGN",
       callback: function(response) {
-        const payload = {
-          total,
-          emailAddress,
-          response
-        };
-        dispatch({
-          type: checkoutActionTypes.PAYMENT_SUCCESSFUL,
-          payload
-        });
+        handleSuccess(response, { total, emailAddress, dispatch });
       },
-      onClose: function() {
-        dispatch({
-          type: checkoutActionTypes.PAYMENT_FAILED,
-          payload: { reason: "Window closed" }
-        });
-      }
+      onClose: handleClose(dispatch)
     });
     handler.openIframe();
   };
+};
+
+const handleClose = dispatch => {
+  dispatch({
+    type: checkoutActionTypes.PAYMENT_FAILED,
+    payload: { reason: "Window closed" }
+  });
+
+  dispatch({
+    type: cartActionTypes.TOGGLE_HIDDEN
+  });
+};
+
+const handleSuccess = (response, { total, emailAddress, dispatch }) => {
+  console.log(response);
+  const payload = {
+    total,
+    emailAddress,
+    response
+  };
+
+  dispatch({
+    type: checkoutActionTypes.PAYMENT_SUCCESSFUL,
+    payload
+  });
+
+  clearAndHideCart(dispatch);
+};
+
+const clearAndHideCart = dispatch => {
+  dispatch({
+    type: cartActionTypes.TOGGLE_HIDDEN
+  });
 };

@@ -1,9 +1,8 @@
 import { cartActionTypes } from "./cart.types";
 
 const INITIAL_STATE = {
-  cartItems: {},
-  hidden: true,
-  paymentDetails: {}
+  cartItem: {},
+  hidden: true
 };
 
 const cartReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -17,21 +16,14 @@ const cartReducer = (state = INITIAL_STATE, { type, payload }) => {
     case cartActionTypes.ADD_ITEM:
       return {
         ...state,
-        cartItems: payload
+        cartItem: payload
       };
 
-    case cartActionTypes.SUCCESS:
+    case cartActionTypes.CLEAR_ITEM:
       return {
         ...state,
-        paymentDetails: payload
+        cartItem: {}
       };
-
-    case cartActionTypes.FAILURE: {
-      return {
-        ...state,
-        paymentDetails: payload
-      };
-    }
 
     default:
       return state;

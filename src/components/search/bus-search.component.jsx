@@ -15,16 +15,16 @@ class BusSearch extends React.Component {
     this.state = {
       origin: "",
       destination: "",
-      departureDate: ""
+      departureDate: "",
     };
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
 
-  handleDateChange = date => {
+  handleDateChange = (date) => {
     this.setState({ departureDate: date });
   };
 
@@ -37,7 +37,7 @@ class BusSearch extends React.Component {
     const query = {
       origin,
       destination,
-      departureDate
+      departureDate,
     };
 
     return (
@@ -83,14 +83,9 @@ class BusSearch extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  search: query => dispatch(search(query)),
-  setQuery: query => dispatch(setQuery(query))
+const mapDispatchToProps = (dispatch) => ({
+  search: (query) => dispatch(search(query)),
+  setQuery: (query) => dispatch(setQuery(query)),
 });
 
-export default withRouter(
-  connect(
-    null,
-    mapDispatchToProps
-  )(BusSearch)
-);
+export default withRouter(connect(null, mapDispatchToProps)(BusSearch));

@@ -4,6 +4,7 @@ import "./navbar.styles.scss";
 
 export const Navbar = ({ color }) => (
   <div className="navbar">
+    <div className="navbar__logo">BookIT</div>
     <ul className="nav">
       <li className={`nav-item ${color ? "dark" : ""}`}>
         <Link to="/">About Us</Link>
