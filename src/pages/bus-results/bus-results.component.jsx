@@ -8,26 +8,34 @@ import BusSearchItem from "../../components/bus-search-item/bus-search-item.comp
 import { Footer } from "../../components/footer/footer.component";
 import BusCheckout from "../../components/bus-checkout/bus-checkout.component";
 
-import { selectBusResults } from "../../redux/search/search.selectors";
+import {
+  selectBusResults,
+  selectLoading,
+} from "../../redux/search/search.selectors";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 
 import "./bus-results.styles.scss";
+import Loader from "../../components/loader/loader.component";
 
-const SearchResults = ({ results, cartHidden }) => (
-  <div className="search-results">
-    <Navbar color />
-    <BusSearchItem />
-    {results.map(result => (
-      <BusResultItem key={result._id} result={result} />
-    ))}
-    {cartHidden ? null : <BusCheckout />}
-    <Footer />
-  </div>
-);
+const SearchResults = ({ results, cartHidden, loading }) => {
+  if (loading) return <Loader />;
+  return (
+    <div className="search-results">
+      <Navbar color />
+      <BusSearchItem />
+      {results.map((result) => (
+        <BusResultItem key={result._id} result={result} />
+      ))}
+      {cartHidden ? null : <BusCheckout />}
+      <Footer />
+    </div>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   results: selectBusResults,
-  cartHidden: selectCartHidden
+  cartHidden: selectCartHidden,
+  loading: selectLoading,
 });
 
 export default connect(mapStateToProps)(SearchResults);

@@ -6,6 +6,7 @@ import { CustomButton } from "../custom-button/custom-button.component";
 import { CustomDatePicker } from "../form-input/date-picker.component";
 import { LinkIcon } from "../link-icon/link-icon.component";
 import { search, setQuery } from "../../redux/search/search.actions";
+import Loader from "../../components/loader/loader.component";
 
 import "./search.styles.scss";
 
@@ -39,6 +40,10 @@ class BusSearch extends React.Component {
       destination,
       departureDate,
     };
+
+    if (this.props.loading) {
+      return <Loader />;
+    }
 
     return (
       <div className="search__bus">
@@ -83,9 +88,15 @@ class BusSearch extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  loading: state.search.loading,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   search: (query) => dispatch(search(query)),
   setQuery: (query) => dispatch(setQuery(query)),
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(BusSearch));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(BusSearch)
+);

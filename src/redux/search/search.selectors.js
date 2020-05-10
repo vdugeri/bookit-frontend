@@ -1,13 +1,18 @@
 import { createSelector } from "reselect";
 
-const selectSearch = state => state.search;
+const selectSearch = (state) => state.search;
 
 export const selectBusResults = createSelector(
   [selectSearch],
-  search => search.busResults
+  (search) => search.busResults
 );
 
 export const selectQuery = createSelector(
   [selectSearch],
-  search => search.query
+  (search) => search.query
+);
+
+export const selectLoading = createSelector(
+  [selectSearch],
+  (search) => search.loading
 );

@@ -1,4 +1,5 @@
 export const searchActionTypes = {
   ADD_BUSES: "ADD_BUSES",
-  SET_QUERY: "SET_QUERY"
+  SET_QUERY: "SET_QUERY",
+  START_FETCHING_BUSES: "START_FETCHING_BUSES",
 };
